@@ -228,59 +228,6 @@ declare namespace middleware {
     export interface ResourcesCallback {
       (err: Error, resources: Resource[]): void;
     }
-
-    export interface DataStoreMethod {
-      /**
-       * @param resource The resource to be deleted.
-       * @param callback An error-first callback. The second parameter is the Resource object, or array of Resource objects that were deleted.
-       */
-      (resource: Resource, callback?: ResourceCallback): void;
-      /**
-       * @param resource1 The resource to be deleted.
-       * @param resource2 The resource to be deleted.
-       * @param callback An error-first callback. The second parameter is the Resource object, or array of Resource objects that were deleted.
-       */
-      (resource1: Resource, resource2: Resource, callback?: ResourcesCallback): void;
-      /**
-       * @param resource1 The resource to be deleted.
-       * @param resource2 The resource to be deleted.
-       * @param resource3 The resource to be deleted.
-       * @param callback An error-first callback. The second parameter is the Resource object, or array of Resource objects that were deleted.
-       */
-      (resource1: Resource, resource2: Resource, resource3: Resource, callback?: ResourcesCallback): void;
-      /**
-       * @param resource1 The resource to be deleted.
-       * @param resource2 The resource to be deleted.
-       * @param resource3 The resource to be deleted.
-       * @param resource4 The resource to be deleted.
-       * @param callback An error-first callback. The second parameter is the Resource object, or array of Resource objects that were deleted.
-       */
-      (resource1: Resource, resource2: Resource, resource3: Resource, resource4: Resource, callback?: ResourcesCallback): void;
-      /**
-       * @param resource1 The resource to be deleted.
-       * @param resource2 The resource to be deleted.
-       * @param resource3 The resource to be deleted.
-       * @param resource4 The resource to be deleted.
-       * @param resource5 The resource to be deleted.
-       * @param callback An error-first callback. The second parameter is the Resource object, or array of Resource objects that were deleted.
-       */
-      (resource1: Resource, resource2: Resource, resource3: Resource, resource4: Resource, resource5: Resource, callback?: ResourcesCallback): void;
-      /**
-       * @param resource1 The resource to be deleted.
-       * @param resource2 The resource to be deleted.
-       * @param resource3 The resource to be deleted.
-       * @param resource4 The resource to be deleted.
-       * @param resource5 The resource to be deleted.
-       * @param resource6 The resource to be deleted.
-       * @param callback An error-first callback. The second parameter is the Resource object, or array of Resource objects that were deleted.
-       */
-      (resource1: Resource, resource2: Resource, resource3: Resource, resource4: Resource, resource5: Resource, resource6: Resource, callback?: ResourcesCallback): void;
-      /**
-       * @param resources The resources to be deleted.
-       * @param callback An error-first callback. The second parameter is the Resource object, or array of Resource objects that were deleted.
-       */
-      (resources: Resource[], callback?: ResourcesCallback): void;
-    }
   }
 
   /**
@@ -359,11 +306,13 @@ declare namespace middleware {
     /**
      * Saves the specified resource(s) to the data store. If any of the resources already exist, the new data is merged with the existing data.
      */
-    save: interfaces.DataStoreMethod;
+    save(resource: Resource|Resource[], callback?: interfaces.ResourceCallback|interfaces.ResourcesCallback): void;
+
     /**
      * Deletes the specified resource(s) from the data store.
      */
-    delete: interfaces.DataStoreMethod;
+     delete(resource: Resource|Resource[], callback?: interfaces.ResourceCallback|interfaces.ResourcesCallback): void;
+
     /**
      * Returns all resources in the specified collection
      * @param collection The collection path (such as "/pets", "/users/jdoe/orders", etc.)
