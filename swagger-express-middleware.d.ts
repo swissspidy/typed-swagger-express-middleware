@@ -319,14 +319,14 @@ declare namespace middleware {
      * @param callback An error-first callback. The second parameter is an array of all Resource objects in the collection.
      * If there are no resources in the collection, then the array is empty.
      */
-    getCollection(collection: string, callback?: interfaces.ResourceCallback): void;
+    getCollection(collection: string, callback?: interfaces.ResourcesCallback): void;
     /**
      * Deletes all resources in the specified collection
      * @param collection The collection path (such as "/pets", "/users/jdoe/orders", etc.)
      * @param callback An error-first callback. The second parameter is an array of all Resource objects that were deleted.
      * If nothing was deleted, then the array is empty.
      */
-    deleteCollection(collection: string, callback?: interfaces.ResourceCallback): void;
+    deleteCollection(collection: string, callback?: interfaces.ResourcesCallback): void;
   }
 
   /**
